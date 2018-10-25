@@ -1,0 +1,42 @@
+.form-container {
+    display: block;
+    width: 50%;
+    padding: 2em;
+    margin: 2em auto;
+    background: #fff;
+}
+
+.alert {
+    background: #d50909;
+    padding: 7px;
+    font-size: .9em;
+    display: inline-block;
+    animation: 2s alertAnim forwards;
+    color: #fff;
+    border-radius: 20px;
+}
+
+.button {
+    margin-top: 1.5rem;
+}
+
+.signHeader {
+    margin-bottom: 2rem;
+    font-weight: bold;
+    font-family: serif;
+    font-size: 2em;
+    text-align: center;
+}
+.outPutInfo {
+    list-style-type: none;
+}
+@keyframes alertAnim {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

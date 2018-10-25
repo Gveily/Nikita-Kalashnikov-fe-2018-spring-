@@ -1,0 +1,82 @@
+<div *ngIf="!name; else forminfo" #validationForm>
+  <form [formGroup]="rForm" (ngSubmit)="addPost(rForm.value)">
+    <div class="form-container">
+      <div class="row columns">
+        <h1 class="signHeader">{{headerContent | titlecase}}</h1>
+        <label>Name:
+          <input type="text" formControlName="name" placeholder="Enter your Name">
+        </label>
+        <div class="alert" *ngIf="name.pending">Validation...</div>
+        <div class="alert" *ngIf="rForm.controls.name.errors?.required && (rForm.controls.name.dirty || rForm.controls.name.touched)">
+          {{titleAlert}}
+        </div>
+        <div class="alert" *ngIf="rForm.controls.name.errors?.invalidName">
+          {{invalidNameAlert}}
+        </div>
+        <label>
+          Age:
+          <input type="text" formControlName="age" placeholder="Enter your Age">
+        </label>
+        <div class="alert" *ngIf="rForm.controls.age.errors?.required && (rForm.controls.age.dirty || rForm.controls.age.touched)">
+          {{titleAlert}}
+        </div>
+        <div class="alert" *ngIf="rForm.controls.age.errors?.incorrectAgeValue">
+          {{incorrectAgeAlert}}
+        </div>
+        <div class="alert" *ngIf="rForm.controls.age.errors?.invalidAge">
+          {{incorrectAgeAlert}}
+        </div>
+        <label>Date of birth:
+          <input type="text" formControlName="dateOfBirth" placeholder="Enter your BirthDate">
+        </label>
+        <div class="alert" *ngIf="rForm.controls.dateOfBirth.errors?.required && (rForm.controls.dateOfBirth.dirty || rForm.controls.dateOfBirth.touched)">
+          {{titleAlert}}
+        </div>
+        <div class="alert" *ngIf="rForm.controls.dateOfBirth.errors?.incorrectDateFormat">
+          {{incorrectDateFormat}}
+        </div>
+        <div class="alert" *ngIf="rForm.controls.dateOfBirth.errors?.incorrectDateValue">
+          {{incorrectDateValue}}
+        </div>
+        <label>Date of first login:
+          <input type="text" formControlName="dateOfFirstLogin" placeholder="Enter your first login date">
+        </label>
+        <div class="alert" *ngIf="rForm.controls.dateOfFirstLogin.errors?.required && (rForm.controls.dateOfFirstLogin.dirty || rForm.controls.dateOfFirstLogin.touched)">
+          {{titleAlert}}
+        </div>
+        <div class="alert" *ngIf="rForm.controls.dateOfFirstLogin.errors?.incorrectDateFormat">
+          {{incorrectDateFormat}}
+        </div>
+        <div class="alert" *ngIf="rForm.controls.dateOfFirstLogin.errors?.incorrectDateValue">
+          {{incorrectDateValue}}
+        </div>
+        <label>Date of notification:
+          <input type="text" formControlName="dateOfNotification" placeholder="Enter notification date">
+        </label>
+        <div class="alert" *ngIf="rForm.controls.dateOfNotification.errors?.required && (rForm.controls.dateOfNotification.dirty || rForm.controls.dateOfNotification.touched)">
+          {{titleAlert}}
+        </div>
+        <div class="alert" *ngIf="rForm.controls.dateOfNotification.errors?.incorrectDateFormat">
+          {{incorrectDateFormat}}
+        </div>
+        <div class="alert" *ngIf="rForm.controls.dateOfNotification.errors?.incorrectDateValue">
+          {{incorrectDateValue}}
+        </div>
+        <input type="submit" class="button expanded" value="Submit Form" [disabled]="!rForm.valid">
+      </div>
+    </div>
+  </form>
+</div>
+<ng-template #forminfo>
+  <div class="form-container">
+    <div class="row columns">
+      <ul class="outPutInfo">
+        <li>Name: {{name}}</li>
+        <li>Age: {{age}}</li>
+        <li>Date of birth: {{dateOfBirth}}</li>
+        <li>Date of first login: {{dateOfFirstLogin}}</li>
+        <li>Date of the next notification: {{dateOfNotification}}</li>
+      </ul>
+    </div>
+  </div>
+</ng-template>

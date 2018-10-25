@@ -29,12 +29,12 @@ app.get("/users", (req, res) => {
 });
 
 app.get("/users/:id", (req, res) => {
-  let user = users.find(user => user.id === Number(req.params.id));
+  const user = users.find(user => user.id === Number(req.params.id));
   res.send(user);
 });
 
 app.post("/users/add", (req, res) => {
-  let user = {
+  const user = {
     id: 1,
     name: req.body.name,
     password: req.body.password,
@@ -50,10 +50,11 @@ app.post("/users/add", (req, res) => {
 
 app.put("/users/:id", (req, res) => {
   let user = users.find(user => user.id === Number(req.params.id));
-
-  user.name = req.body.name;
+  if(user){
+     user.name = req.body.name;
   user.password = req.body.password;
   res.send(user);
+  }
 });
 
 app.delete("/users/:id", (req, res) => {
@@ -62,6 +63,6 @@ app.delete("/users/:id", (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Server successfully starder on ${port} port`);
+  console.log(`Server successfully started on ${port} port`);
 });
 
